@@ -1,57 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useEffect } from 'react';
 import './App.css';
+import HomeScreen from "./screens/HomeScreen";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import LoginScreen from './screens/LoginScreen';
+import { auth } from './firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser, login } from './features/userSlice';
+import ProfileScreen from './screens/ProfileScreen';
+
 
 function App() {
+  const user = useSelector(selectUser); //give me the user back
+  const dispatch = useDispatch()
+  {/*To check if user is signed in and also keep track of the latest signed in user, if so then directly go to app even on refresh*/ }
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        //Logged in
+        dispatch(login({
+          uid: userAuth.uid,
+          email: userAuth.email,
+        }));
+      }
+      else {
+        //Logged out
+        dispatch(logout());
+      }
+    })
+    return unsubscribe; //when it cleans up run the subscribe function
+  }, [dispatch])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <div className="app">
+      <Router>
+        {!user ? (
+          <LoginScreen />
+        ) : (
+          <Switch>
+            <Route path="/profile"> {/*Profile Path */}
+              <ProfileScreen />
+            </Route>
+            {/* Routes have paths/links to different pages, its efficient and faster */}
+            <Route path="/">
+              <HomeScreen />
+            </Route>
+          </Switch>
+        )}
+      </Router>
+    </div >
+
   );
 }
 
