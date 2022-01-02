@@ -3,6 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Project Preview
 
 [Project link](https://netflix-clone-rugg.web.app/)
+
 <img>![image](https://user-images.githubusercontent.com/86529890/147870057-071de4f8-7385-4b00-a7d0-b534ed102280.png)
 </img>
 
