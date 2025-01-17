@@ -14,41 +14,61 @@ Welcome to the **Netflix Clone** repository. This project is a frontend replica 
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Technologies Used](#technologies-used)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Contact](#contact)
+4. [Environment Variables](#environment-variables)
+5. [Installation](#installation)
+6. [Usage](#usage)
+7. [Contributing](#contributing)
+8. [License](#license)
 
 ---
 
 ## Introduction
 
-This project aims to replicate the core functionalities of Netflix's interface, providing a platform to practice and demonstrate skills in React.js, Redux, and Firebase integration.
+This project is a Frontend application that replicates Netflix's streaming platform. It utilizes React for the frontend, Firebase for authentication and data storage, the TMDB API for movie data, and Stripe for payment processing.
 
 ---
 
 ## Features
 
-- **User Authentication:** Sign in with Google accounts using Firebase Authentication.
-- **Post Creation:** Users can create and share posts with the community.
-- **Real-time Updates:** Posts and user interactions are updated in real-time.
-- **Responsive Design:** Optimized for various screen sizes to ensure a seamless user experience across devices.
+- **User Authentication:** Secure sign-in and sign-up functionality using Firebase Authentication.
+- **Movie Browsing:** Fetch and display movies using the TMDB API.
+- **Subscription Management:** Integrate Stripe for handling subscription payments.
+- **Responsive Design:** Ensure compatibility across various devices and screen sizes.
 
 ---
 
 ## Technologies Used
 
-- **React.js:** A JavaScript library for building user interfaces.
-- **Redux:** A predictable state container for JavaScript apps.
-- **Firebase:** Utilized for authentication and real-time database services.
-- **Styled Components:** For writing CSS-in-JS and styling React components.
+- **React:** JavaScript library for building user interfaces.
+- **Firebase:** Platform for authentication and real-time database services.
+- **TMDB API:** Source for movie and TV show data.
+- **Stripe:** Payment processing platform for managing subscriptions.
+- **Redux:** State management library for JavaScript applications.
+- **Axios:** Promise-based HTTP client for making API requests.
+- **Styled Components:** Library for styling React components.
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the root directory and add the following environment variables:
+
+```env
+REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+REACT_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+REACT_APP_FIREBASE_APP_ID=your_firebase_app_id
+REACT_APP_TMDB_API_KEY=your_tmdb_api_key
+REACT_APP_STRIPE_PUBLIC_KEY=your_stripe_public_key
+```
 
 ---
 
 ## Installation
 
-To run this project locally, follow these steps:
+To set up the project locally, follow these steps:
 
 1. **Clone the repository:**
 
@@ -59,27 +79,15 @@ To run this project locally, follow these steps:
 
 2. **Install dependencies:**
 
-   Ensure you have [Node.js](https://nodejs.org/) installed. Then, install the required packages:
+   Ensure you have [Node.js](https://nodejs.org/) installed. Then, run:
 
    ```bash
    npm install
    ```
 
-3. **Configure Firebase:**
+3. **Configure environment variables:**
 
-   - Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
-   - Enable Google authentication in the Firebase Authentication section.
-   - Set up a Firestore database.
-   - Create a `.env` file in the root directory and add your Firebase configuration:
-
-     ```env
-     REACT_APP_API_KEY=your_api_key
-     REACT_APP_AUTH_DOMAIN=your_project_id.firebaseapp.com
-     REACT_APP_PROJECT_ID=your_project_id
-     REACT_APP_STORAGE_BUCKET=your_project_id.appspot.com
-     REACT_APP_MESSAGING_SENDER_ID=your_messaging_sender_id
-     REACT_APP_APP_ID=your_app_id
-     ```
+   Create a `.env` file in the root directory and add the environment variables as specified above.
 
 ---
 
@@ -125,14 +133,6 @@ Contributions are welcome! To contribute:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Contact
-
-If you have any questions or suggestions, feel free to contact me:
-
-- **GitHub:** [@rugg07](https://github.com/rugg07)
 
 ---
 
